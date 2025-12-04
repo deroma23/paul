@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ student.full_name }}</h2>
+
+<div>
+    <a href="{% url 'add_project' %}">Add Project</a> | 
+    <a href="{% url 'add_skill' %}">Add Skill</a>
+</div>
+
+<h3>Projects</h3>
+<ul>
+    {% for project in projects %}
+        <li><strong>{{ project.title }}</strong>: {{ project.description }}</li>
+    {% empty %}
+        <li>No projects yet.</li>
+    {% endfor %}
+</ul>
+
+<h3>Skills</h3>
+<ul>
+    {% for skill in skills %}
+        <li>{{ skill.name }} - {{ skill.level }}</li>
+    {% empty %}
+        <li>No skills yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
